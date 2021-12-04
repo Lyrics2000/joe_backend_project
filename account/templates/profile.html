@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+   {% include 'head.html' %}
+   <body class="has-side-panel side-panel-right fullwidth-page side-push-panel">
+      <div class="body-overlay"></div>
+      <div id="side-panel" class="dark" data-bg-img="images/bg/bg8.jpg">
+         <div class="side-panel-wrap">
+            <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="pe-7s-close font-36"></i></a></div>
+            <a href="javascript:void(0)"><img alt="logo" src="images/logo-wide.png"></a>
+            <div class="side-panel-nav mt-30">
+               <div class="widget no-border">
+                  <nav>
+                     <ul class="nav nav-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li>
+                           <a class="tree-toggler nav-header">Pages <i class="fa fa-angle-down"></i></a>
+                           <ul class="nav nav-list tree">
+                              <li><a href="#">About</a></li>
+                              <li><a href="#">Terms</a></li>
+                              <li><a href="#">FAQ</a></li>
+                           </ul>
+                        </li>
+                        <li><a href="#">Contact</a></li>
+                     </ul>
+                  </nav>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="side-panel-widget mt-30">
+               <div class="widget no-border">
+                  <ul>
+                     <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="#" class="text-gray">123-456-789</a> </li>
+                     <li class="font-14 mb-5"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 8:00 to 2:00 </li>
+                     <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="#" class="text-gray">contact@yourdomain.com</a> </li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
+                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  </ul>
+               </div>
+               <p>Copyright &copy;2016 ThemeMascot</p>
+            </div>
+         </div>
+      </div>
+      <div id="wrapper" class="clearfix">
+         <!-- preloader -->
+        {% include 'pre_loader.html' %}
+         <!-- Header -->
+        {% include 'header.html' %}
+         <!-- Start main-content -->
+         <div class="main-content">
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="images/bg/bg3.jpg">
+               <div class="container pt-70 pb-20">
+                  <!-- Section Content -->
+                  <div class="section-content">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h2 class="title text-white">My Account</h2>
+                           <ol class="breadcrumb text-left text-black mt-10">
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Pages</a></li>
+                              <li class="active text-gray-silver">Page Title</li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- Section: Doctor Details -->
+            <section class="">
+               <div class="container">
+                  <div class="section-content">
+                     <div class="row">
+                        <div class="col-sx-12 col-sm-4 col-md-4">
+                           <div class="doctor-thumb">
+                              <img src="images/about/profile1.jpg" alt="">
+                           </div>
+                           <div class="info p-20 bg-black-333">
+                              <h4 class="text-uppercase text-white">{{request.user.username}}</h4>
+                             
+                              <ul class="list angle-double-right m-0">
+                                 <li class="mt-0 text-gray-silver"><strong class="text-gray-lighter">First Name</strong><br>{{request.user.first_name}}</li>
+                                 <li class="text-gray-silver"><strong class="text-gray-lighter">Last Name</strong><br>{{request.user.last_name}}</li>
+                                 <li class="text-gray-silver"><strong class="text-gray-lighter">Email</strong><br>{{request.user.email}}</li>
+                                 <li class="text-gray-silver"><strong class="text-gray-lighter">Phone</strong><br>{{request.user.phone}}</li>
+                              </ul>
+         
+                              <a href="{% url 'account:logout' %}" class="btn btn-danger btn-flat mt-10 mb-sm-30" href="#">Logout</a>
+                           </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8">
+                           <div>
+                              <!-- Nav tabs -->
+                              <ul class="nav nav-tabs" role="tablist">
+                                 <li role="presentation" class="active"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab" class="font-15 text-uppercase">Just For You <span class="badge"></span></a></li>
+                                 <li role="presentation"><a href="#free-orders" aria-controls="free-orders" role="tab" data-toggle="tab" class="font-15 text-uppercase">Broad Cast<span class="badge"></span></a></li>
+                                
+                              </ul>
+                              <!-- Tab panes -->
+                              <div class="tab-content">
+                                 <div role="tabpanel" class="tab-pane active" id="orders">
+                                    <div class="table-responsive">
+                                       <table class="table table-hover">
+                                          <thead>
+                                             <tr>
+                                                <th>Message id</th>
+                                                <th>Message</th>
+                                               
+                                          </thead>
+                                          <tbody>
+                                              {% if just_for_you %}
+                                              {% for jfy in just_for_you %}
+                                             <tr>
+                                                <th scope="row">{{jfy.id}}</th>
+                                                <td>{{jfy.message}}</td>
+                                              
+                                             </tr>
+                                             {% endfor %}
+
+                                             {% endif %}
+                                         
+                                           
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane" id="free-orders">
+                                    <table class="table table-hover">
+                                       <thead>
+                                          <tr>
+                                             <th>Message id</th>
+                                             <th>Message</th>
+                                           
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+
+                                        {% if all_messages %}
+                                        {% for hh in all_messages %}
+                                          <tr>
+                                             <th scope="row">{{hh.id}}</th>
+                                             <td>{{hh.message}}</td>
+                                             
+                                          </tr>
+                                          {% endfor %}
+                                          {% endif %}
+                                      
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane" id="bookmarks">
+                                    <table class="table">
+                                       <tbody>
+                                          <tr>
+                                             <th scope="row"><img src="http://placehold.it/100x50" alt=""></th>
+                                             <td>
+                                                <h4>Web Development Course</h3></h4>
+                                             <td>
+                                                <h4>$127.50</h3></h4>
+                                             <td>
+                                                <h4><a href="#"><i class="fa fa-close"></i></a></h3></h4>
+                                          </tr>
+                                          <tr>
+                                             <th scope="row"><img src="http://placehold.it/100x50" alt=""></th>
+                                             <td>
+                                                <h4>Software Development Course</h3></h4>
+                                             <td>
+                                                <h4>$127.50</h3></h4>
+                                             <td>
+                                                <h4><a href="#"><i class="fa fa-close"></i></a></h3></h4>
+                                          </tr>
+                                          <tr>
+                                             <th scope="row"><img src="http://placehold.it/100x50" alt=""></th>
+                                             <td>
+                                                <h4>App Development Course</h3></h4>
+                                             <td>
+                                                <h4>$127.50</h3></h4>
+                                             <td>
+                                                <h4><a href="#"><i class="fa fa-close"></i></a></h3></h4>
+                                          </tr>
+                                          <tr>
+                                             <th scope="row"><img src="http://placehold.it/100x50" alt=""></th>
+                                             <td>
+                                                <h4>Photoshop Course</h3></h4>
+                                             <td>
+                                                <h4>$127.50</h3></h4>
+                                             <td>
+                                                <h4><a href="#"><i class="fa fa-close"></i></a></h3></h4>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
+         <!-- end main-content -->
+         <!-- Footer -->
+         {% include 'footer.html' %}
+      </div>
+      <!-- end wrapper --> 
+      <!-- Footer Scripts --> 
+      <!-- JS | Custom script for all pages --> 
+      {% include 'js.html' %}
+   </body>
+</html>

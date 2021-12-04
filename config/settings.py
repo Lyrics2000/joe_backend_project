@@ -29,11 +29,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'authentification',
+    'account',
     'djoser',
     'mainapp',
     'corsheaders',
-    'drugs'
+    'drugs',
+ 
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+
 ]
 
 MIDDLEWARE = [
@@ -42,6 +46,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -51,7 +56,10 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR/'templates'),
+        os.path.join(BASE_DIR/'mainapp/templates'),
+        os.path.join(BASE_DIR/'account/templates'),
+        os.path.join(BASE_DIR/'drugs/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,18 +102,18 @@ REST_FRAMEWORK = {
 }
 
 
-AUTH_USER_MODEL = 'authentification.User'
+# AUTH_USER_MODEL = 'authentification.User'
 
 
-DJOSER = {
-    'LOGIN_FIELD':'email',
-    "USER_CREATE_PASSWORD_RETYPE":True,
-    'SERIALIZERS':{
-        'user_create':'authentification.serializer.UserCreateSerializer',
-        'user':'authentification.serializer.UserCreateSerializer',
-        # 'current_user':'authentification.serializer.CurrentUserSerializer'
-    }
-}
+# DJOSER = {
+#     'LOGIN_FIELD':'email',
+#     "USER_CREATE_PASSWORD_RETYPE":True,
+#     'SERIALIZERS':{
+#         'user_create':'authentification.serializer.UserCreateSerializer',
+#         'user':'authentification.serializer.UserCreateSerializer',
+#         # 'current_user':'authentification.serializer.CurrentUserSerializer'
+#     }
+# }
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -152,6 +160,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_files'),
+]
 
 STATIC_ROOT = os.path.join('static_cdn')
 
@@ -160,5 +171,16 @@ MEDIA_ROOT = os.path.join('media_cdn')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+AUTH_USER_MODEL = "account.User"
+# LOGIN_REDIRECT_URL = "/"
+# LOGIN_URL = "/account/login/"
+# LOGIN_URL = "two_factor:login"
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thomasambetsa@gmail.com'
+EMAIL_HOST_PASSWORD = 'wojjleviqxakkazs'
+EMAIL_PORT = 587

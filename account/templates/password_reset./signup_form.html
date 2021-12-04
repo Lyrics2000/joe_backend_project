@@ -1,0 +1,38 @@
+{% load static %}
+ 
+<section>
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6 col-md-push-3">
+             <h4 class="text-gray mt-0 pt-5">Reset Password</h4>
+             <form name="login-form" class="clearfix" method = "POST" action="{% url 'account:sign_up' %}" >
+               {% csrf_token %}
+                <div class="row">
+                   <div class="form-group col-md-12">
+                      <label for="form_username_email">Password</label>
+                      <input id="form_username_email" name="password" class="form-control" type="text">
+                   </div>
+                </div>
+     
+         
+            
+                <div class="row">
+                   <div class="form-group col-md-12">
+                      <label for="form_password">Confirm Password</label>
+                      <input id="form_password" name="password_two" class="form-control" type="password">
+                   </div>
+                </div>
+                
+               
+              
+                <div class="clear text-center pt-10">
+                   <button type="submit" class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Sign Up</button>
+
+                   <a href="{% url 'account:sign_in' %}" type="submit" class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#34a853">Login</a>
+                   
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </section>

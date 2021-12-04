@@ -4,9 +4,11 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/',include('authentification.urls'))
+    path("account/", include("account.urls", namespace="account")),
+    path('',include('mainapp.urls',namespace="mainapp"))
 ]
 if settings.DEBUG:
     urlpatterns = urlpatterns + \

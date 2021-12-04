@@ -1,0 +1,412 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+{% comment %} start head {% endcomment %}
+
+{% include 'head.html' %}
+
+{% comment %} end head {% endcomment %}
+
+
+<body class="boxed-layout pt-40 pb-40 pt-sm-0 has-side-panel side-panel-right fullwidth-page side-push-panel" data-bg-img="{% static 'images/pattern/p2.png' %}">
+<div class="body-overlay"></div>
+
+{% comment %} side pannel {% endcomment %}
+
+{% include 'side_panel.html' %}
+
+
+{% comment %} end side pannel {% endcomment %}
+
+<div id="wrapper" class="clearfix">
+  <!-- preloader -->
+
+  {% include 'pre_loader.html' %}
+ 
+  
+  <!-- Header -->
+  
+
+{% include 'header.html' %}
+
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: home -->
+    <section id="home" class="divider">
+      <div class="container-fluid p-0">
+        
+        <!-- Slider Revolution Start -->
+        <div class="rev_slider_wrapper">
+          <div class="rev_slider" data-version="5.0">
+            <ul>
+
+            {% if  sliding %}
+
+            {% for i in  sliding  %}
+
+              <!-- SLIDE 1 -->
+              <li data-index="rs-1" data-transition="random" data-slotamount="7"  data-easein="default" data-easeout="default" data-masterspeed="1000"  data-thumb="{{ i.image.url }}"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Intro" data-description="">
+                <!-- MAIN IMAGE -->
+                <img src="{{ i.image.url }}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="6" data-no-retina>
+                <!-- LAYERS -->
+
+                <!-- LAYER NR. 1 -->
+                <div class="tp-caption tp-resizeme text-uppercase text-white bg-dark-transparent-5 pl-30 pr-30"
+                  id="rs-1-layer-1"
+                
+                  data-x="['center']"
+                  data-hoffset="['0']"
+                  data-y="['middle']"
+                  data-voffset="['-90']" 
+                  data-fontsize="['28']"
+                  data-lineheight="['54']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1000" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 7; white-space: nowrap; font-weight:600; border-radius:45px;">{{i.header1}}
+                </div>
+
+                <!-- LAYER NR. 2 -->
+                <div class="tp-caption tp-resizeme text-uppercase text-white bg-theme-colored-transparent pl-40 pr-40"
+                  id="rs-1-layer-2"
+
+                  data-x="['center']"
+                  data-hoffset="['0']"
+                  data-y="['middle']"
+                  data-voffset="['-20']"
+                  data-fontsize="['48']"
+                  data-lineheight="['70']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1000" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 7; white-space: nowrap; font-weight:600; border-radius:45px;">{{i.header2}}
+                </div>
+
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption tp-resizeme text-center text-black" 
+                  id="rs-1-layer-3"
+
+                  data-x="['center']"
+                  data-hoffset="['0']"
+                  data-y="['middle']"
+                  data-voffset="['50','60','70']"
+                  data-fontsize="['16','18','24']"
+                  data-lineheight="['28']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1400" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">{{i.body}}
+                </div>
+
+              </li>
+
+              {% endfor %}
+
+              {% endif %}
+
+              
+            </ul>
+          </div><!-- end .rev_slider -->
+        </div>
+        <!-- end .rev_slider_wrapper -->
+        <script>
+          $(document).ready(function(e) {
+            var revapi = $(".rev_slider").revolution({
+              sliderType:"standard",
+              sliderLayout: "auto",
+              dottedOverlay: "none",
+              delay: 5000,
+              navigation: {
+                  keyboardNavigation: "off",
+                  keyboard_direction: "horizontal",
+                  mouseScrollNavigation: "off",
+                  onHoverStop: "off",
+                  touch: {
+                      touchenabled: "on",
+                      swipe_threshold: 75,
+                      swipe_min_touches: 1,
+                      swipe_direction: "horizontal",
+                      drag_block_vertical: false
+                  },
+                  arrows: {
+                      style: "zeus",
+                      enable: true,
+                      hide_onmobile: true,
+                      hide_under:600,
+                      hide_onleave: true,
+                      hide_delay: 200,
+                      hide_delay_mobile: 1200,
+                      tmp:'<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+                      left: {
+                          h_align: "left",
+                          v_align: "center",
+                          h_offset: 30,
+                          v_offset: 0
+                      },
+                      right: {
+                          h_align: "right",
+                          v_align: "center",
+                          h_offset: 30,
+                          v_offset: 0
+                      }
+                  },
+                    bullets: {
+                    enable: true,
+                    hide_onmobile: true,
+                    hide_under: 600,
+                    style: "hebe",
+                    hide_onleave: false,
+                    direction: "horizontal",
+                    h_align: "center",
+                    v_align: "bottom",
+                    h_offset: 0,
+                    v_offset: 30,
+                    space: 5,
+                    tmp: '<span class="tp-bullet-image"></span><span class="tp-bullet-imageoverlay"></span><span class="tp-bullet-title"></span>'
+                }
+              },
+              responsiveLevels: [1240, 1024, 778],
+              visibilityLevels: [1240, 1024, 778],
+              gridwidth: [1170, 1024, 778, 480],
+              gridheight: [680, 500, 400, 400],
+              lazyType: "none",
+              parallax: {
+                  origo: "slidercenter",
+                  speed: 1000,
+                  levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55],
+                  type: "scroll"
+              },
+              shadow: 0,
+              spinner: "off",
+              stopLoop: "on",
+              stopAfterLoops: 0,
+              stopAtSlide: -1,
+              shuffle: "off",
+              autoHeight: "off",
+              fullScreenAutoWidth: "off",
+              fullScreenAlignForce: "off",
+              fullScreenOffsetContainer: "",
+              fullScreenOffset: "0",
+              hideThumbsOnMobile: "off",
+              hideSliderAtLimit: 0,
+              hideCaptionAtLimit: 0,
+              hideAllCaptionAtLilmit: 0,
+              debugMode: false,
+              fallbacks: {
+                  simplifyAll: "off",
+                  nextSlideOnWindowFocus: "off",
+                  disableFocusListener: false,
+              }
+            });
+          });
+        </script>
+        <!-- Slider Revolution Ends -->
+
+      </div>
+    </section>
+
+    <!-- Section: home-boxes -->
+    <section class="">
+      <div class="container pt-0 pb-0">
+        <div class="section-content">
+          <div class="row equal-height-inner home-boxes mt-sm-20" data-margin-top="-80px">
+            {% if services %}
+
+            {% for s in services  %}
+            
+            <div class="col-sm-12 col-md-3 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay1">
+              <div class="sm-height-auto bg-theme-colored">
+                <div class="text-center pt-30 pb-30">
+                  <i class="fa fa-stethoscope text-white font-64"></i>
+                  <h5 class="text-uppercase"><a href="#" class="text-white">{{s.services}}</a></h5>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+            
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: about -->
+   
+    <!-- Section: Services -->
+    <section class=" bg-lighter">
+      <div class="container pb-20">
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase mt-0 line-height-1">Drug Info</h2>
+              <div class="title-icon">
+                <img class="mb-10" src="{% static 'images/title-icon.png' %}" alt="">
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        {% comment %} start table {% endcomment %}
+
+        <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Type</th>
+                <th>Shipping Date</th>
+                <th>Expected Arrival Date</th>
+                <th>Derivery Location</th>
+                <th>Initial Quantity</th>
+                <th>FInal Quantity</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% if drugs %}
+        {% for d in drugs %}
+            <tr>
+                <th >{{d.drug_name}}</th>
+                <th >{{d.drug_type}}</th>
+                {% if shipping %}
+                {% for m in shipping %}
+                {% if m.drug_id.id == d.id  %}
+                <th>{{m.shipping_date}}</th>
+                <th>{{m.expected_arrival_time}}</th>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% if  location %}
+                {% for l in location %}
+                {% if l.drug_id.id  == d.id%}
+                <th>{{l.location_name}}</th>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% if quantity %}
+                {% for q in quantity %}
+                {% if q.drug_id.id ==  d.id %}
+                <th>{{q.initial_qty}} (ml)</th>
+                <th>{{q.final_qty}} (ml)</th>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+
+    
+
+ 
+  
+        </table>
+
+
+        {% comment %} end table {% endcomment %}
+      </div>
+    </section>
+
+    <!-- Section: Doctors -->
+    <section id="doctors">
+      <div class="container">
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase mt-0 line-height-1">Clinics Available</h2>
+              <div class="title-icon">
+                <img class="mb-10" src="{% static 'images/title-icon.png' %}" alt="">
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="row mtli-row-clearfix">
+          <div class="col-md-12">
+            <div class="owl-carousel-4col">
+              {% if clinics %}
+              {% for f in clinics  %}
+              <div class="item">
+                <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
+                  <div class="team-thumb">
+                    <img class="img-fullwidth" height="300" width="200" alt="" src="{{f.image.url}}">
+                    <div class="team-overlay"></div>
+                  </div>
+                  <div class="team-details bg-silver-light pt-10 pb-10">
+                    <h4 class="text-uppercase font-weight-600 m-5">{{f.name}}</h4>
+                    <h6 class="text-theme-colored font-15 font-weight-400 mt-0">{{f.locatione_name}}</h6>                    
+                
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              {% endif %}
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+
+    <!-- Section: Pricing -->
+   
+    <!-- Section: Client Say -->
+  
+    <!-- Section: Gallery -->
+   
+    <!-- Divider: Appoinment Form -->
+   
+    <!-- Section: blog -->
+   
+  </div>
+  <!-- end main-content -->
+  
+  <!-- Footer -->
+
+  {% include 'footer.html' %}
+
+</div>
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+<!-- JS | Custom script for all pages -->
+{% include 'js.html' %}
+</body>
+</html>

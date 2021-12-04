@@ -1,0 +1,33 @@
+{% load static %}
+ 
+<section>
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6 col-md-push-3">
+             <h4 class="text-gray mt-0 pt-5"> Login</h4>
+             <form name="login-form" class="clearfix" method = "POST" action="{% url 'account:sign_in' %}" >
+               {% csrf_token %}
+                <div class="row">
+                   <div class="form-group col-md-12">
+                      <label for="form_username_email">Email</label>
+                      <input id="form_username_email" name="email" class="form-control" type="text">
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="form-group col-md-12">
+                      <label for="form_password">Password</label>
+                      <input id="form_password" name="password" class="form-control" type="password">
+                   </div>
+                </div>
+                
+               
+              
+                <div class="clear text-center pt-10">
+                   <button type="submit" class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login</button>
+                   <a href="{% url 'account:sign_up' %}" type="submit" class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#34a853">Sign Up</a> 
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </section>
