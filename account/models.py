@@ -22,6 +22,8 @@ def upload_image_path(instance,filename):
 class User(AbstractUser):
     email = models.EmailField(verbose_name='email',max_length=255,unique=True)
     phone = models.CharField(null=True,max_length=255)
+    email_confirmed = models.BooleanField(default=False)
+    reset_password = models.BooleanField(default=False)
   
     REQUIRED_FIELDS = ['username','phone','first_name','last_name']
     USERNAME_FIELD = 'email'

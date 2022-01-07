@@ -116,9 +116,7 @@ REST_FRAMEWORK = {
 # }
 
 CORS_ALLOW_ALL_ORIGINS = True
-
-
-
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
