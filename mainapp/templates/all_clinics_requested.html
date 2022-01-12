@@ -91,6 +91,11 @@
                                  <div class="event-details p-15 mt-20">
                                     <h4 class="media-heading text-uppercase font-weight-500">{{l.clinic.name}}</h4>
                                     <p>{{l.clinic.clinic_description}}</p>
+                                    {% if accept_transfer_request %}
+                                    <button type="button" class="btn btn-success">Accepted Request</button>
+                                    
+                                    {% else %}
+                                    
                                     <form method = "POST" action ="{% url 'mainapp:delete_request' %}">
                                         {% csrf_token %}
                                   
@@ -100,6 +105,8 @@
                                         </div>
                                         <button type="submit" class="btn btn-danger">Delete Request</button>
                                       </form>
+
+                                      {% endif %}
                                  </div>
                               </div>
                               <div class="col-sm-4">

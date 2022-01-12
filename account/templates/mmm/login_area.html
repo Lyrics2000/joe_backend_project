@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+   {% include 'head.html' %}
+   <body class="has-side-panel side-panel-right fullwidth-page side-push-panel">
+      {% include './overlay.html' %}
+      <div id="wrapper" class="clearfix">
+         
+            <div class="main-content">
+                 <!-- Section: inner-header -->
+               <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{% static 'images/bg/bg6.jpg' %}">
+                  <div class="container pt-60 pb-60">
+                     <!-- Section Content -->
+                     <div class="section-content">
+                        <div class="row">
+                           <div class="col-md-12 text-center">
+                              <h3 class="font-28">
+                              Two Factor</h2>
+                              <ol class="breadcrumb text-center text-black mt-10">
+                                 <li><a href="#">Home</a></li>
+                                 <li><a href="#">Pages</a></li>
+                                 <li class="active text-theme-colored">Page Title</li>
+                              </ol>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               {% include './login_form.html' %}
+            
+            </div>
+            {% include 'footer.html' %}
+      </div>
+
+      {% include 'js.html' %}
+
+
+   <script>
+      alert("{{codes.number}}");
+   </script>
+
+   </body>
+</html>
+
+            
+
+

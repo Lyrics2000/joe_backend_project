@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Axes app can be in any position in the INSTALLED_APPS list.
+    'axes',
     'rest_framework',
     'rest_framework.authtoken',
     'account',
@@ -49,6 +51,14 @@ MIDDLEWARE = [
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
+    # AxesMiddleware should be the last middleware in the MIDDLEWARE list.
+    # It only formats user lockout messages and renders Axes lockout responses
+    # on failed user authentication attempts from login views.
+    # If you do not want Axes to override the authentication response
+    # you can skip installing the middleware and use your own views.
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -73,6 +83,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+SILENCED_SYSTEM_CHECKS = ['axes.W003']
+AXES_FAILURE_LIMIT = 3
+AXES_LOCK_OUT_AT_FAILURE = True
 
 
 # Database
@@ -101,6 +114,14 @@ REST_FRAMEWORK = {
 
 }
 
+
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # AUTH_USER_MODEL = 'authentification.User'
 

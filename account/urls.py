@@ -4,7 +4,8 @@ from django.urls import path
 from .views import (index,signup,logout_user,profile_image,activate_account,profile_account,
 password_reset,
 reset,
-change_user)
+change_user,
+two_factor)
 
 
 app_name = "account"
@@ -20,7 +21,8 @@ urlpatterns = [
     path('reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         reset, name='reset'),
     path('account/',profile_account,name="profile"),
-    path("change_user_password/",change_user,name="change_user")
+    path("change_user_password/",change_user,name="change_user"),
+    path("two_factor/",two_factor,name="two_factor")
 ]
 
 

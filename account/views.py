@@ -20,6 +20,7 @@ from django.http import HttpResponse
 
 from drugs.models import Notifications
 from mainapp.models import AllBroadcast
+from .models import Codes
 
 # Create your views here.
 def logout_user(request):
@@ -40,13 +41,31 @@ def index(request):
         print(username,password)
         user = authenticate(request,username = username, password = password )
         if user is not None:
-        
             login(request,user)
             print("user....")
-            return redirect("mainapp:index")
+            return redirect("account:two_factor")
         else:
             pass
     return render(request,'signin.html',context)
+
+@login_required(login_url="account:sign_in")
+def two_factor(request):
+    user_id =  request.user.id
+    user_obj = User.objects.get(id = user_id)
+    code = Codes.objects.get(user =  user_obj)
+
+    if request.method == "POST":
+        code_req  = request.POST.get("codes")
+        if(int(code_req) == int(code.number)):
+            return redirect("mainapp:index")
+        else:
+            return redirect("account:two_factor")
+
+    context = {
+        'codes':code
+    }
+
+    return render(request,'two_factor.html',context)
 
 
 def signup(request):

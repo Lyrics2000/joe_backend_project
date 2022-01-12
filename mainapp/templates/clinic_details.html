@@ -103,6 +103,7 @@
                               {% for cn in  clinic_transfers  %}
                               
                               {% if cn.clinic.id ==  clinic.id %}
+                              {% if cn.user_id.id  == request.user.id %}
                               <form method = "POST" action ="{% url 'mainapp:delete_request' %}">
                                 {% csrf_token %}
                           
@@ -111,6 +112,21 @@
                                  
                                 </div>
                                 <button type="submit" class="btn btn-danger">Delete Request</button>
+
+                                {% else %}
+
+                                <form method = "POST" action ="{% url 'mainapp:make_request' %}">
+                                 {% csrf_token %}
+                           
+                                 <div class="form-check">
+                                   <input type="hidden" name="clinic_id" value="{{clinic.id}}" class="form-check-input" id="exampleCheck1">
+                                  
+                                 </div>
+                                 <button type="submit" class="btn btn-primary">Request</button>
+                               </form>
+ 
+
+                                {% endif %}
                               </form>
                               
                               {% endif %}
